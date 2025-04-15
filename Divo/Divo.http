@@ -1,0 +1,6 @@
+@Divo_HostAddress = http://localhost:5046
+
+GET {{Divo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
