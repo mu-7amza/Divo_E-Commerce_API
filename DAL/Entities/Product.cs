@@ -18,7 +18,13 @@ namespace DAL.Entities
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+        public int UnitsInStock { get; set; } 
+
         public bool IsDeleted { get; set; } = false;
+
+        public int CategoryId { get; set; }
+
+        public Category? Category { get; set; }
 
     }
 }
