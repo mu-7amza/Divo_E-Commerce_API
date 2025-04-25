@@ -3,11 +3,13 @@ using BLL.IRepositories;
 using BLL.Repositories;
 using DAL.Dtos;
 using DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PL.Divo.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -16,6 +18,7 @@ namespace PL.Divo.Controllers
         private readonly IGenericRepository<Category> _catRepo;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+
         public ProductController(IGenericRepository<Product> repo, IMapper mapper, IUnitOfWork unitOfWork, IGenericRepository<Category> catRepo)
         {
             _prodRepo = repo;
@@ -36,6 +39,7 @@ namespace PL.Divo.Controllers
         }
 
         [HttpPost()]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddProduct(ProductDto product)
         {
             var category = await _catRepo.GetById(product.CategoryId);
