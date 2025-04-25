@@ -22,7 +22,7 @@ namespace PL.Divo.Controllers
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost()]
         public async Task<IActionResult> AddCategory(CategoryDto category)
         {
@@ -37,7 +37,7 @@ namespace PL.Divo.Controllers
             var catDto = _mapper.Map<Category>(category);
             await _repo.Add(catDto);
             await _unitOfWork.SaveAsync();
-            return Ok();
+            return Ok("Category Added !");
         }
     }
 }
