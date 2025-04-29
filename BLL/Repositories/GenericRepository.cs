@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,9 +29,20 @@ namespace BLL.Repositories
             _context.Remove(entity);
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IEnumerable<T>> GetAll(bool includeProperties = false,
+                                                params Expression<Func<T, object>>[] includes)
         {
-            return await _context.Set<T>().AsNoTracking().ToListAsync();
+            IQueryable<T> query = _context.Set<T>().AsNoTracking();
+
+            if (includeProperties && includes != null)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            return await query.ToListAsync();
         }
 
         public Task<T> GetById(int id)

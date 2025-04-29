@@ -25,5 +25,6 @@ namespace DAL.Contexts
         // Define your DbSet properties for each entity here
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Brand> Brands { get; set; }
     }
 }

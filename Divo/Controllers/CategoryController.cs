@@ -22,6 +22,19 @@ namespace PL.Divo.Controllers
             _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
+
+        [HttpGet()]
+        [Authorize(Roles = "User,Admin")]
+        public async Task<IActionResult> GetCategories()
+        {
+            var categories = await _repo.GetAll(includeProperties:true,C => C.Products);
+            if (categories == null)
+            {
+                return NotFound();
+            }
+            return Ok(categories);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost()]
         public async Task<IActionResult> AddCategory(CategoryDto category)
@@ -38,6 +51,24 @@ namespace PL.Divo.Controllers
             await _repo.Add(catDto);
             await _unitOfWork.SaveAsync();
             return Ok("Category Added !");
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategory([FromRoute]int Id)
+        {
+            var category = await _repo.GetById(Id);
+
+            if (category == null)
+            {
+                return BadRequest(new
+                {
+                    Message = "Category is not found or may be deleted"
+                });
+            }
+
+             _repo.Delete(category);
+            return Ok("Category Deleted !");
         }
     }
 }
