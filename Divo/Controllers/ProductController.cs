@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using BLL.IRepositories;
 using BLL.Repositories;
-using DAL.Dtos;
+using BLL.Specifications;
 using DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PL.Divo.Dtos;
 
 namespace PL.Divo.Controllers
 {
@@ -29,21 +30,23 @@ namespace PL.Divo.Controllers
 
         [HttpGet()]
         [Authorize(Roles = "User,Admin")]
-        public async Task<IActionResult> GetProducts() 
+        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts() 
         {
-            var products = await _prodRepo.GetAll(includeProperties:false);
-            if (products == null)
-            {
-                return NotFound();
-            }
-            return Ok(products);
+            var spec = new ProductsWithCategoriesAndBrandsSpecification();
+
+            var products = await _prodRepo.ListAsync(spec);
+
+            return Ok(_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductToReturnDto>>(products));
         }
 
         [HttpGet("{id}")]
         [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetProduct([FromRoute] int id)
         {
-            var product = await _prodRepo.GetById(id);
+            var spec = new ProductsWithCategoriesAndBrandsSpecification(id);
+
+            var product = await _prodRepo.GetEntityWithSpec(spec);
+
             if (product is null)
             {
                 return NotFound(new
@@ -51,12 +54,13 @@ namespace PL.Divo.Controllers
                     Message = "Product Not Found"
                 });
             }
-            return Ok(product);
+
+            return Ok(_mapper.Map<Product, ProductToReturnDto>(product));
         }
 
         [HttpPost()]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddProduct(ProductDto product)
+        public async Task<IActionResult> AddProduct(ProductToSendDto product)
         {
             if (product == null)
             {
