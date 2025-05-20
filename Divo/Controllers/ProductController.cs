@@ -1,18 +1,19 @@
 ﻿using AutoMapper;
 using BLL.IRepositories;
 using BLL.Repositories;
-using DAL.Dtos;
+using BLL.Specifications;
 using DAL.Entities;
+using Divo.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PL.Divo.Dtos;
 
 namespace PL.Divo.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController : BaseApiController
     {
         private readonly IGenericRepository<Product> _prodRepo;
         private readonly IGenericRepository<Category> _catRepo;
@@ -28,35 +29,36 @@ namespace PL.Divo.Controllers
         }
 
         [HttpGet()]
-        [Authorize(Roles = "User,Admin")]
-        public async Task<IActionResult> GetProducts() 
+        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts() 
         {
-            var products = await _prodRepo.GetAll(includeProperties:false);
-            if (products == null)
-            {
-                return NotFound();
-            }
-            return Ok(products);
+            var spec = new ProductsWithCategoriesAndBrandsSpecification();
+
+            var products = await _prodRepo.ListAsync(spec);
+
+            return Ok(_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductToReturnDto>>(products));
         }
 
-        [HttpGet("{id}")]
         [Authorize(Roles = "User,Admin")]
-        public async Task<IActionResult> GetProduct([FromRoute] int id)
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiErrorResponse), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<ProductToReturnDto>> GetProduct([FromRoute] int id)
         {
-            var product = await _prodRepo.GetById(id);
+            var spec = new ProductsWithCategoriesAndBrandsSpecification(id);
+
+            var product = await _prodRepo.GetEntityWithSpec(spec);
+
             if (product is null)
             {
-                return NotFound(new
-                {
-                    Message = "Product Not Found"
-                });
+                return NotFound(new ApiErrorResponse(404));
             }
-            return Ok(product);
+
+            return  _mapper.Map<Product, ProductToReturnDto>(product);
         }
 
         [HttpPost()]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> AddProduct(ProductDto product)
+        public async Task<IActionResult> AddProduct(ProductToSendDto product)
         {
             if (product == null)
             {
@@ -73,7 +75,7 @@ namespace PL.Divo.Controllers
                 });
             }
 
-            var productDto = _mapper.Map<Product>(product);
+            var productDto = _mapper.Map<ProductToSendDto,Product>(product);
             await _prodRepo.Add(productDto);
             await _unitOfWork.SaveAsync();
             return Ok("Created Succesfully");

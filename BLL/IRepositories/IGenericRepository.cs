@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace BLL.IRepositories
 {
-    public interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : BaseEntity
     {
         Task<T> GetById(int id);
-        Task<IEnumerable<T>> GetAll(bool includeProperties, params Expression<Func<T, object>>[] includes);
+        Task<IReadOnlyList<T>> GetAll();
         Task Add(T entity);
+        Task<T> GetEntityWithSpec(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
         void Update(T entity);
         void Delete(T entity);
+
     }
 }

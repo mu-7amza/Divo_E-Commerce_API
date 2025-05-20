@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using BLL.IRepositories;
-using DAL.Dtos;
 using DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PL.Divo.Dtos;
 
 namespace PL.Divo.Controllers
 {
@@ -27,7 +27,7 @@ namespace PL.Divo.Controllers
         [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetCategories()
         {
-            var categories = await _repo.GetAll(includeProperties:true,C => C.Products);
+            var categories = await _repo.GetAll();
             if (categories == null)
             {
                 return NotFound();
@@ -37,7 +37,7 @@ namespace PL.Divo.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost()]
-        public async Task<IActionResult> AddCategory(CategoryDto category)
+        public async Task<IActionResult> AddCategory([FromBody]CategoryDto category)
         {
             if (category == null)
             {

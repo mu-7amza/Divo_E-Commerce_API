@@ -18,9 +18,9 @@ namespace DAL.EntitiesConfiguration
             builder.Property(p => p.Price).HasPrecision(18, 2);
             builder.Property(p => p.PictureUrl).IsRequired();
 
-            builder.HasOne(p => p.Brand).WithMany(Brand => Brand.Products)
+            builder.HasOne(p => p.Brand).WithMany()
                 .HasForeignKey(p => p.BrandId);
-            builder.HasOne(p => p.Category).WithMany(C => C.Products)
+            builder.HasOne(p => p.Category).WithMany()
                 .HasForeignKey(p => p.CategoryId);
 
         }

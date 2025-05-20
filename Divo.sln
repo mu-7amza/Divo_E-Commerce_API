@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.Divo", "Divo\PL.Divo.csproj", "{82556E17-F0CD-41D1-A447-1F65768D74EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{7B239A51-62F3-47E9-A148-7148D6067146}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{640E6EDD-4F9A-4039-8779-30C2F3CF8939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivoUI", "DivoUI\DivoUI.csproj", "{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{640E6EDD-4F9A-4039-8779-30C2F3CF8939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{640E6EDD-4F9A-4039-8779-30C2F3CF8939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{640E6EDD-4F9A-4039-8779-30C2F3CF8939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

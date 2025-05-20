@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.Dtos
+namespace PL.Divo.Dtos
 {
     public class CategoryDto
     {
