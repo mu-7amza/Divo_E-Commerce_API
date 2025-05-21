@@ -19,6 +19,15 @@ namespace BLL.Repositories
                 query = query.Where(spec.Criteria);
             }
 
+            if (spec.OrderBy is not null)
+            {
+                query = query.OrderBy(spec.OrderBy);
+            }
+            else if (spec.OrderByDescending is not null)
+            {
+                query = query.OrderByDescending(spec.OrderByDescending);
+            }
+
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
             return query;
         }

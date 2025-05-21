@@ -23,7 +23,22 @@ namespace BLL.Repositories
 
         public List<Expression<Func<T, object>>> Includes { get; } = [];
 
-        protected void AddInclude(Expression<Func<T,object>> includeExpression)
+        public Expression<Func<T, object>> OrderBy { get; private set; }
+        public void AddOrderBy(Expression<Func<T, object>> orderByExpression)
+        {
+            OrderBy = orderByExpression;
+        }
+        
+        public void AddOrderByDescending(Expression<Func<T, object>> orderByDescExpression)
+        {
+            OrderByDescending = orderByDescExpression;
+        }
+
+        public Expression<Func<T, object>> OrderByDescending { get; private set; }
+        
+
+
+        protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
             Includes.Add(includeExpression);
         }
