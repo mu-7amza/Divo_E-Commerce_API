@@ -4,6 +4,7 @@ using BLL.Repositories;
 using BLL.Specifications;
 using DAL.Entities;
 using Divo.Errors;
+using Divo.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +30,25 @@ namespace PL.Divo.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProducts() 
+        public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
+            [FromQuery]ProductSpecParams productParams) 
         {
-            var spec = new ProductsWithCategoriesAndBrandsSpecification();
+            var spec = new ProductsWithCategoriesAndBrandsSpecification(productParams);
+
+            var countSpec = new ProductsWithFiltersForCountSpecifications(productParams);
+
+            var totalItems = await _prodRepo.CountAsync(countSpec);
 
             var products = await _prodRepo.ListAsync(spec);
+            
+            var data = _mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products);
 
-            return Ok(_mapper.Map<IReadOnlyList<Product>,IReadOnlyList<ProductToReturnDto>>(products));
+            return Ok(new Pagination<ProductToReturnDto>(
+                productParams.PageIndex,
+                productParams.PageSize,
+                totalItems,
+                data
+            ));
         }
 
         [Authorize(Roles = "User,Admin")]

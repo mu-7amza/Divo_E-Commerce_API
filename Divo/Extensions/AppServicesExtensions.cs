@@ -59,8 +59,8 @@ namespace Divo.Extensions
                         ValidateAudience = false,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = .Configuration["Jwt:Issuer"],
-                        ValidAudience = .Configuration["Jwt:Audience"],
+                        ValidIssuer = config["Jwt:Issuer"],
+                        ValidAudience = config["Jwt:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))
                     };
                 });
@@ -94,9 +94,21 @@ namespace Divo.Extensions
 
                };
            });
+
             services.AddEndpointsApiExplorer();
+
             services.AddSwaggerGen();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .WithOrigins("https://localhost:4200");
+                });
+            });
+            
             return services;
         }
     }

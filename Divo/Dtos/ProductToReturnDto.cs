@@ -17,7 +17,7 @@ namespace PL.Divo.Dtos
 
         public decimal Price { get; set; }
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
 
         public string PictureUrl { get; set; } = string.Empty;
 

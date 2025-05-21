@@ -15,6 +15,7 @@ namespace BLL.IRepositories
         Task Add(T entity);
         Task<T> GetEntityWithSpec(ISpecification<T> spec);
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
+        Task<int> CountAsync(ISpecification<T> spec);
         void Update(T entity);
         void Delete(T entity);
 
