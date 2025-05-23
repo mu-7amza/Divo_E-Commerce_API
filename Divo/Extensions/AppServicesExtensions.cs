@@ -8,11 +8,13 @@ using BLL.Repositories;
 using DAL.Contexts;
 using DAL.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PL.Divo.Errors;
+using StackExchange.Redis;
 
 namespace Divo.Extensions
 {
@@ -21,10 +23,18 @@ namespace Divo.Extensions
         public static IServiceCollection AddAppServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<AppDbContext>(
-       options => options.UseSqlServer(config.GetConnectionString("DivoConnection")));
+                options => options.UseSqlServer(config.GetConnectionString("DivoConnection")));
 
             services.AddDbContext<AuthDbContext>(
                 options => options.UseSqlServer(config.GetConnectionString("AuthConnection")));
+
+            services.AddSingleton<IConnectionMultiplexer>(
+                c =>
+                {
+                    var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+                    return ConnectionMultiplexer.Connect(options);
+                }
+            );
 
 
             services.AddIdentityCore<ApplicationUser>()
@@ -65,6 +75,7 @@ namespace Divo.Extensions
                     };
                 });
 
+            services.AddScoped<IBasketRepository, BasketRepository>();
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
@@ -75,7 +86,6 @@ namespace Divo.Extensions
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
             services.Configure<ApiBehaviorOptions>(options =>
            {
