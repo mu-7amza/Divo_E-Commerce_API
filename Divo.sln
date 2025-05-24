@@ -8,9 +8,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{7B239A51-62F3-47E9-A148-7148D6067146}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{640E6EDD-4F9A-4039-8779-30C2F3CF8939}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DivoUI", "DivoUI\DivoUI.csproj", "{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}"
-EndProject
+EndProjects
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{640E6EDD-4F9A-4039-8779-30C2F3CF8939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{640E6EDD-4F9A-4039-8779-30C2F3CF8939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{640E6EDD-4F9A-4039-8779-30C2F3CF8939}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D26A0AC-B8B2-468E-8C5B-0ADFCD0C0C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

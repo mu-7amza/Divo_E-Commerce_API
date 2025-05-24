@@ -1,144 +1,144 @@
 [
   {
-    "Name": "Angular Speedster Board 2000",
+    "Name": "T-Shirt Batman Logo",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 200,
+    "Price": 600,
     "PictureUrl": "images/products/sb-ang1.png",
     "CategoryId": 1,
     "BrandId": 1
   },
   {
-    "Name": "Green Angular Board 3000",
+    "Name": "T-Shirt You Only Live Once",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 150,
+    "Price": 856,
     "PictureUrl": "images/products/sb-ang2.png",
     "CategoryId": 1,
     "BrandId": 1
   },
   {
-    "Name": "Core Board Speed Rush 3",
+    "Name": "T-Shirt Superman Logo",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
+    "Price": 350,
     "PictureUrl": "images/products/sb-core1.png",
     "CategoryId": 1,
     "BrandId": 2
   },
   {
-    "Name": "Net Core Super Board",
+    "Name": "T-Shirt I Love Coding",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 300,
+    "Price": 450,
     "PictureUrl": "images/products/sb-core2.png",
     "CategoryId": 1,
     "BrandId": 2
   },
   {
-    "Name": "React Board Super Whizzy Fast",
+    "Name": "T-Shirt Code Monkey",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 250,
+    "Price": 600,
     "PictureUrl": "images/products/sb-react1.png",
     "CategoryId": 1,
-    "BrandId": 4
+    "BrandId": 1
   },
   {
-    "Name": "Typescript Entry Board",
+    "Name": "T-Shirt I Love Angular",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 120,
+    "Price": 800,
     "PictureUrl": "images/products/sb-ts1.png",
     "CategoryId": 1,
-    "BrandId": 5
-  },
-  {
-    "Name": "Core Blue Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 10,
-    "PictureUrl": "images/products/hat-core1.png",
-    "CategoryId": 2,
     "BrandId": 2
   },
   {
-    "Name": "Green React Woolen Hat",
+    "Name": "Shoes Nike Air",
+    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Price": 1500,
+    "PictureUrl": "images/products/hat-core1.png",
+    "CategoryId": 2,
+    "BrandId": 4
+  },
+  {
+    "Name": "Shoes Red Dragon",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 8,
+    "Price": 1200,
     "PictureUrl": "images/products/hat-react1.png",
     "CategoryId": 2,
-    "BrandId": 4
+    "BrandId": 3
   },
   {
-    "Name": "Purple React Woolen Hat",
+    "Name": "Shoes Adidas",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 15,
+    "Price": 560,
     "PictureUrl": "images/products/hat-react2.png",
     "CategoryId": 2,
-    "BrandId": 4
+    "BrandId": 5
   },
   {
-    "Name": "Blue Code Gloves",
+    "Name": "Trousers Black",
     "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-    "Price": 18,
+    "Price": 630,
     "PictureUrl": "images/products/glove-code1.png",
     "CategoryId": 4,
-    "BrandId": 3
+    "BrandId": 6
   },
   {
-    "Name": "Green Code Gloves",
+    "Name": "Trousers Blue",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 15,
+    "Price": 950,
     "PictureUrl": "images/products/glove-code2.png",
     "CategoryId": 4,
-    "BrandId": 3
+    "BrandId": 5
   },
   {
-    "Name": "Purple React Gloves",
+    "Name": "Jeans Blue",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
-    "Price": 16,
+    "Price": 580,
     "PictureUrl": "images/products/glove-react1.png",
     "CategoryId": 4,
     "BrandId": 4
   },
   {
-    "Name": "Green React Gloves",
+    "Name": "Jeans Black",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 14,
+    "Price": 900,
     "PictureUrl": "images/products/glove-react2.png",
     "CategoryId": 4,
     "BrandId": 4
   },
   {
-    "Name": "Redis Red Boots",
+    "Name": "Jeans White",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 250,
+    "Price": 600.50,
     "PictureUrl": "images/products/boot-redis1.png",
     "CategoryId": 3,
     "BrandId": 6
   },
   {
-    "Name": "Core Red Boots",
+    "Name": "Trousers Red",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 189.99,
+    "Price": 500.50,
     "PictureUrl": "images/products/boot-core2.png",
     "CategoryId": 3,
     "BrandId": 2
   },
   {
-    "Name": "Core Purple Boots",
+    "Name": "Trousers Baby Blue",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 199.99,
+    "Price": 850,
     "PictureUrl": "images/products/boot-core1.png",
     "CategoryId": 3,
     "BrandId": 2
   },
   {
-    "Name": "Angular Purple Boots",
+    "Name": "Trouser rose",
     "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 150,
+    "Price": 1000,
     "PictureUrl": "images/products/boot-ang2.png",
     "CategoryId": 3,
     "BrandId": 1
   },
   {
-    "Name": "Angular Blue Boots",
+    "Name": "Trouser Biege",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
+    "Price": 800,
     "PictureUrl": "images/products/boot-ang1.png",
     "CategoryId": 3,
     "BrandId": 1
