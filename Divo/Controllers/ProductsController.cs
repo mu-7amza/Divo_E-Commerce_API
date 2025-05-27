@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
 using BLL.IRepositories;
-using BLL.Repositories;
 using BLL.Specifications;
 using DAL.Entities;
 using Divo.Errors;
 using Divo.Helpers;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PL.Divo.Dtos;
 
@@ -14,20 +12,12 @@ namespace PL.Divo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : BaseApiController
+    public class ProductsController(IGenericRepository<Product> repo, IMapper mapper, IUnitOfWork unitOfWork, IGenericRepository<Category> catRepo) : BaseApiController
     {
-        private readonly IGenericRepository<Product> _prodRepo;
-        private readonly IGenericRepository<Category> _catRepo;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-
-        public ProductController(IGenericRepository<Product> repo, IMapper mapper, IUnitOfWork unitOfWork, IGenericRepository<Category> catRepo)
-        {
-            _prodRepo = repo;
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
-            _catRepo = catRepo;
-        }
+        private readonly IGenericRepository<Product> _prodRepo = repo;
+        private readonly IGenericRepository<Category> _catRepo = catRepo;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly IMapper _mapper = mapper;
 
         [HttpGet()]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(

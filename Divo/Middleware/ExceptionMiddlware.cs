@@ -8,18 +8,12 @@ using Divo.Errors;
 
 namespace Divo.Middleware
 {
-    public class ExceptionMiddlware 
+    public class ExceptionMiddlware(RequestDelegate next, ILogger<ExceptionMiddlware> logger, IHostEnvironment env)
     {
 
-        private readonly RequestDelegate _next;
-        private readonly ILogger<ExceptionMiddlware> _logger;
-        private readonly IHostEnvironment _env;
-        public ExceptionMiddlware(RequestDelegate next, ILogger<ExceptionMiddlware> logger, IHostEnvironment env)
-        {
-            _next = next;
-            _logger = logger;
-            _env = env;
-        }
+        private readonly RequestDelegate _next = next;
+        private readonly ILogger<ExceptionMiddlware> _logger = logger;
+        private readonly IHostEnvironment _env = env;
 
         public async Task InvokeAsync(HttpContext context){
 

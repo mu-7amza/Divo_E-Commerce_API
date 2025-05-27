@@ -23,7 +23,8 @@ namespace BLL.Repositories
             {
                 query = query.OrderBy(spec.OrderBy);
             }
-            else if (spec.OrderByDescending is not null)
+
+            if (spec.OrderByDescending is not null)
             {
                 query = query.OrderByDescending(spec.OrderByDescending);
             }

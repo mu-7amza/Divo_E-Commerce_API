@@ -5,19 +5,11 @@ using System.Threading.Tasks;
 
 namespace Divo.Helpers
 {
-    public class Pagination<T> where T : class
+    public class Pagination<T>(int pageIndex, int pageSize, int totalCount, IReadOnlyList<T> data) where T : class
     {
-        public Pagination(int pageIndex, int pageSize, int totalCount, IReadOnlyList<T> data)
-        {
-            PageIndex = pageIndex;
-            PageSize = pageSize;
-            TotalCount = totalCount;
-            Data = data;
-        }
-
-        public int PageIndex { get; set; }
-        public int TotalCount { get; set; }
-        public int PageSize { get; set; }
-        public IReadOnlyList<T> Data { get; set; }
+        public int PageIndex { get; set; } = pageIndex;
+        public int TotalCount { get; set; } = totalCount;
+        public int PageSize { get; set; } = pageSize;
+        public IReadOnlyList<T> Data { get; set; } = data;
     }   
 }

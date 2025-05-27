@@ -11,13 +11,9 @@ using DAL.Entities;
 
 namespace Divo.Controllers
 {
-    public class BasketController : BaseApiController
+    public class BasketController(IBasketRepository basketRepository) : BaseApiController
     {
-        private readonly IBasketRepository _basketRepository;
-        public BasketController(IBasketRepository basketRepository)
-        {
-            _basketRepository = basketRepository;
-        }
+        private readonly IBasketRepository _basketRepository = basketRepository;
 
         [HttpGet]
         public async Task<ActionResult<CustomerBasket>> GetBasket(string id)

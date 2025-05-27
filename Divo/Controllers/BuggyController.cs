@@ -7,14 +7,9 @@ namespace PL.Divo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BuggyController : ControllerBase
+    public class BuggyController(AppDbContext context) : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public BuggyController(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         [HttpGet("notfound")]
         public IActionResult GetNotFound()

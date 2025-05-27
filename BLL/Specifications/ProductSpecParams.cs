@@ -23,7 +23,7 @@ namespace BLL.Specifications
 
         public int? CategoryId { get; set; }
 
-        public string Sort { get; set; } = string.Empty;
+        public string? Sort { get; set; } 
 
         private string _search = string.Empty;
 

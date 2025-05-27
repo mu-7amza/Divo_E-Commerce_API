@@ -1,17 +1,8 @@
-using BLL.IRepositories;
-using BLL.Repositories;
 using DAL.Contexts;
-using DAL.Entities;
 using DAL.Utility.DataSeed;
 using Divo.Extensions;
 using Divo.Middleware;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using PL.Divo.Errors;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

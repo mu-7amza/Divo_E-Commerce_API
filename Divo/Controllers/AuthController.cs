@@ -9,15 +9,10 @@ namespace PL.Divo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(UserManager<ApplicationUser> userManager, ITokenRepository tokenRepository) : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ITokenRepository _tokenRepository;
-        public AuthController(UserManager<ApplicationUser> userManager, ITokenRepository tokenRepository)
-        {
-            _userManager = userManager;
-            _tokenRepository = tokenRepository;
-        }
+        private readonly UserManager<ApplicationUser> _userManager = userManager;
+        private readonly ITokenRepository _tokenRepository = tokenRepository;
 
         [HttpPost]
         [Route("register")]

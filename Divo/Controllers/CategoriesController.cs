@@ -8,23 +8,15 @@ using PL.Divo.Dtos;
 
 namespace PL.Divo.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController(IGenericRepository<Category> repo, IMapper mapper, IUnitOfWork unitOfWork) : ControllerBase
     {
-        private readonly IGenericRepository<Category> _repo;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public CategoryController(IGenericRepository<Category> repo, IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _repo = repo;
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
-        }
+        private readonly IGenericRepository<Category> _repo = repo;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly IMapper _mapper = mapper;
 
         [HttpGet()]
-        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetCategories()
         {
             var categories = await _repo.GetAll();

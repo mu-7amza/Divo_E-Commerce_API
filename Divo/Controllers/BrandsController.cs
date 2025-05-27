@@ -11,20 +11,13 @@ namespace PL.Divo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class BrandsController(IGenericRepository<Brand> repo, IMapper mapper, IUnitOfWork unitOfWork) : ControllerBase
     {
-        private readonly IGenericRepository<Brand> _repo;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        public BrandController(IGenericRepository<Brand> repo, IMapper mapper, IUnitOfWork unitOfWork)
-        {
-            _repo = repo;
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
-        }
+        private readonly IGenericRepository<Brand> _repo = repo;
+        private readonly IUnitOfWork _unitOfWork = unitOfWork;
+        private readonly IMapper _mapper = mapper;
 
         [HttpGet()]
-        [Authorize(Roles = "User,Admin")]
         public async Task<IActionResult> GetBrands()
         {
             var brands = await _repo.GetAll();
